@@ -273,8 +273,6 @@ body, button {
 */
 
 #welcomeImageSeal {
-    border-radius: 50%;
-    border: 2px solid #cad7e1;
     background: rgba(1, 2, 1, 0.5);
     height: 125px;
     width: 125px;
@@ -486,8 +484,6 @@ body, button {
 
 /* Logo on login form. */
 #loginImageSeal {
-    border-radius: 50%;
-    border: 2px solid #cad7e1;
     background: rgba(1, 2, 1, 0.5);
     height: 125px;
     width: 125px;
@@ -2465,7 +2461,7 @@ input:checked + .toggleSwitchSlider:before {
     display: inline-flex;
     width: 15%;
     height: 100%;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
 }
 #landingContainer > #upper > #content {
     display: inline-flex;
@@ -2510,10 +2506,15 @@ input:checked + .toggleSwitchSlider:before {
     justify-content: center;
 }
 #landingContainer > #lower > #center #content {
-    position: relative;
+    position: absolute; /* keep news at fixed vertical position regardless of play above */
     z-index: 500;
-    transition: top 2s ease;
-    top: 10px;
+    transition: top 0.25s ease;
+    top: 25px; /* align with left server_status */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center; /* center news horizontally */
+    align-items: center; /* center vertically within this content block */
 }
 #landingContainer > #lower > #right {
     position: relative;
@@ -2855,12 +2856,9 @@ input:checked + .toggleSwitchSlider:before {
 
 /* Logo image. */
 #image_seal {
-    height: 70px;
+    height: 140px;
     width: auto;
     position: relative;
-    border: 2px solid white;
-    box-sizing: border-box;
-    border-radius: 50%;
 }
 
 /* Logo container styles. */
@@ -2868,8 +2866,8 @@ input:checked + .toggleSwitchSlider:before {
     position: relative;
     height: 70px;
     width: 70px;
-    border-radius: 50%;
-    margin-top: 50px;
+    margin-top: 10px;
+    margin-left: 25px;
 }
 
 /* Logo container styles w/ update. */
@@ -2885,7 +2883,6 @@ input:checked + .toggleSwitchSlider:before {
     width: 100%;
     top: 0%;
     left: 0%;
-    border-radius: 50%;
     box-shadow: 0 0 15px #43c628;
     animation: glow-grow 4s ease-out infinite;
     background: rgba(0, 0, 0, 0.15);
@@ -2944,6 +2941,23 @@ input:checked + .toggleSwitchSlider:before {
         opacity: 0;
     }
 }
+
+/* * *
+* Landing View center | center content
+* * */
+
+#full-logo {
+    height: 75%;
+    width: auto;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: transform 0.25s ease;
+}
+
 
 /* * *
 * Landing View (Bottom Styles) | Right Content
@@ -3046,7 +3060,7 @@ input:checked + .toggleSwitchSlider:before {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 27px;
+    height: 37px;
 }
 
 /* Divider bar between the external and internal icons. */
@@ -3060,16 +3074,15 @@ input:checked + .toggleSwitchSlider:before {
 /* Social media icon shared styles. */
 .mediaSVG {
     fill: #ffffff;
-    height: 12px;
+    height: 22px;
     transition: 0.25s ease;
     cursor: pointer;
-    height: 12px;
-    width: 25px;
+    width: 35px;
 }
 .mediaSVG:hover,
 .mediaURL:focus .mediaSVG,
 .mediaSVG:active {
-    height: 20px;
+    height: 30px;
 }
 
 /* Social media URL shared styles. */
@@ -3136,32 +3149,22 @@ input:checked + .toggleSwitchSlider:before {
     transition-delay:0s;
 }
 
-/* X icon colors. */
-#xSVG:hover,
-#xURL:focus #xSVG {
-    fill: #000000;
+/* Boutique icon colors. */
+#boutiqueSVG:hover,
+#boutiqueURL:focus #boutiqueSVG {
+    fill: #f39c12;
 }
-#xSVG:active {
-    fill: #090909;
-}
-
-/* Instagram icon colors. */
-#instagramSVG:hover,
-#instagramURL:focus #instagramSVG {
-    fill: url('#instaFill')
-    /*fill: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); */
-}
-#instagramSVG:active {
-    fill: url('#instaFill')
+#boutiqueSVG:active {
+    fill: #d35400;
 }
 
-/* Youtube icon colors. */
-#youtubeSVG:hover,
-#youtubeURL:focus #youtubeSVG {
-    fill: #f00;
+/* TikTok icon colors. */
+#tiktokSVG:hover,
+#tiktokURL:focus #tiktokSVG {
+    fill: #ff0050;
 }
-#youtubeSVG:active {
-    fill: #ea0202;
+#tiktokSVG:active {
+    fill: #00f2ea;
 }
 
 /* Discord icon colors. */
@@ -3387,35 +3390,45 @@ input:checked + .toggleSwitchSlider:before {
 * * */
 
 /* Main launch content container. */
-#landingContainer > #lower > #right #launch_content {
+#landingContainer > #lower > #center #launch_content {
     position: relative;
-    top: 25px;
+    top: -50px; /* remonté précédemment */
     display: inline-flex;
+    align-items: center;
+    margin-bottom: 10px;
+    z-index: 600; /* ensure play stays above centered news */
 }
 
 /* The launch button. */
 #launch_button {
-    background: none;
-    border: none;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 4px;
     cursor: pointer;
     font-weight: 900;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
     text-shadow: 0px 0px 0px #bebcbb;
-    font-size: 20px;
-    padding: 0px;
-    transition: 0.25s ease;
+    font-size: 26px;
+    padding: 10px 40px;
+    transition: 0.3s ease;
     outline: none;
+    backdrop-filter: blur(4px);
 }
 #launch_button:hover,
 #launch_button:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.8);
     text-shadow: 0px 0px 20px #fff, 0px 0px 20px #fff;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.15);
 }
 #launch_button:active {
     color: #c7c7c7;
+    border-color: rgba(199, 199, 199, 0.6);
     text-shadow: 0px 0px 20px #c7c7c7, 0px 0px 20px #c7c7c7;
 }
 #launch_button:disabled {
     color: #c7c7c7;
+    border-color: rgba(199, 199, 199, 0.2);
     cursor: default;
     pointer-events: none;
 }
@@ -3965,4 +3978,160 @@ input:checked + .toggleSwitchSlider:before {
 /* Class which is applied when the spinner image is spinning. */
 .rotating {
     animation: rotating 10s linear infinite;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Offline Login View (offlineLogin.ejs overrides & fixes)                    *
+ *                                                                             *
+ ******************************************************************************/
+
+#offlineLoginContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    transition: filter 0.25s ease;
+    background: rgba(0, 0, 0, 0.50);
+}
+
+#offlineLoginCancelContainer {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+
+#offlineLoginCancelButton {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+#offlineLoginCancelButton:hover #loginCancelIcon,
+#offlineLoginCancelButton:hover #loginCancelText,
+#offlineLoginCancelButton:focus #loginCancelIcon,
+#offlineLoginCancelButton:focus #loginCancelText {
+    text-shadow: 0px 0px 20px white;
+}
+#offlineLoginCancelButton:hover #loginCancelIcon,
+#offlineLoginCancelButton:focus #loginCancelIcon {
+    box-shadow: 0px 0px 20px white;
+}
+#offlineLoginCancelButton:active #loginCancelIcon,
+#offlineLoginCancelButton:active #loginCancelText {
+    text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.75);
+    border-color: rgba(255, 255, 255, 0.75);
+}
+#offlineLoginCancelButton:active #loginCancelIcon {
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.75);
+}
+#offlineLoginCancelButton:disabled {
+    pointer-events: none;
+}
+#offlineLoginCancelButton:disabled #loginCancelIcon,
+#offlineLoginCancelButton:disabled #loginCancelText {
+    color: rgba(255, 255, 255, 0.75);
+    border-color: rgba(255, 255, 255, 0.75);
+}
+
+#offlineLoginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#offlineLoginSubheader {
+    font-family: 'Avenir Medium';
+    margin-top: 10px;
+    margin-bottom: 25px;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+}
+
+#offlineLoginUsername {
+    width: 280px;
+    font-size: 14px;
+    padding: 10px 15px;
+    border-width: 0px 0px 2px 0px !important;
+    border-color: rgba(255, 255, 255, 0.85) !important;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    margin-bottom: 25px;
+}
+
+#offlineLoginUsername::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+#offlineLoginButton {
+    background: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border: none;
+    padding: 15px 5px;
+    margin: 10px 0px;
+    cursor: pointer;
+    position: relative;
+    right: -20px;
+    transition: 0.5s ease;
+}
+#offlineLoginButton:disabled {
+    color: rgba(255, 255, 255, 0.75);
+    pointer-events: none;
+}
+#offlineLoginButton[loading] {
+    color: #fff;
+}
+#offlineLoginButton:hover,
+#offlineLoginButton:focus {
+    text-shadow: 0px 0px 20px #fff;
+    outline: none;
+}
+#offlineLoginButton:active {
+    color: #c7c7c7;
+    text-shadow:  0px 0px 20px #c7c7c7;
+}
+#offlineLoginButton:hover #loginSVG,
+#offlineLoginButton:focus #loginSVG {
+    -webkit-filter: drop-shadow(0px 0px 2px #fff);
+}
+#offlineLoginButton:active #loginSVG .arrowLine {
+    stroke: #c7c7c7;
+}
+#offlineLoginButton:active #loginSVG {
+    -webkit-filter: drop-shadow(0px 0px 2px #c7c7c7);
+}
+#offlineLoginButton:disabled #loginSVG .arrowLine {
+    stroke: rgba(255, 255, 255, 0.75);
+}
+
+#offlineLoginButton .circle-loader,
+#offlineLoginButton[loading] #loginSVG {
+    display: none;
+}
+#offlineLoginButton[loading] .circle-loader,
+#offlineLoginButton #loginSVG {
+    display: initial;
+}
+
+/* Fix squished logo seal on both login forms */
+#loginImageSeal {
+    height: auto !important;
+    max-height: 90px;
+    width: 220px;
+    object-fit: contain;
+    background: none !important;
+    box-shadow: none !important;
+    margin-bottom: 25px;
 }
