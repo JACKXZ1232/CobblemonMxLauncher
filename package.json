@@ -1,13 +1,13 @@
 {
-  "name": "helioslauncher",
-  "version": "2.2.1",
-  "productName": "Helios Launcher",
+  "name": "CobblemoxMxLauncher",
+  "version": "1.1.0",
+  "productName": "CobblemonMX Launcher",
   "description": "Modded Minecraft Launcher",
-  "author": "Daniel Scalzi (https://github.com/dscalzi/)",
+  "author": "By Emmpty (https://github.com/JACKXZ1232/CobblemonMxLauncher)",
   "license": "UNLICENSED",
-  "homepage": "https://github.com/dscalzi/HeliosLauncher",
+  "homepage": "https://github.com/JACKXZ1232/CobblemonMxLauncher",
   "bugs": {
-    "url": "https://github.com/dscalzi/HeliosLauncher/issues"
+    "url": "https://github.com/JACKXZ1232/CobblemonMxLauncher/issues"
   },
   "private": true,
   "main": "index.js",
@@ -41,12 +41,13 @@
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "^5.6.1",
-    "electron": "^39.2.7",
+    "electron": "^39.8.10",
     "electron-builder": "^26.4.0",
-    "eslint": "^9.39.2"
+    "eslint": "^9.39.2",
+    "node": "^22.22.3"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dscalzi/HeliosLauncher.git"
+    "url": "git+https://github.com/JACKXZ1232/CobblemonMxLauncher.git"
   }
 }
